@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../widgets/custom_textfield.dart';
+import '../../widgets/custom_texfield.dart';
 import 'login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
