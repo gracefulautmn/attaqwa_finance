@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import '../../data/models/transaction.dart';
+import '../auth/auth_controller.dart';
 import 'home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -16,6 +17,12 @@ class HomeView extends GetView<HomeController> {
         elevation: 0,
         backgroundColor: Theme.of(context).primaryColor,
         foregroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () => Get.find<AuthController>().signOut(),
+          ),
+        ],
       ),
       body: Obx(() {
         if (controller.isLoading.value) {
