@@ -2,8 +2,8 @@ class Account {
   final String id;
   final String code;
   final String name;
-  final String type;          // 'Aset Lancar' | 'Pendapatan' | 'Beban' | 'Aset Tetap'
-  final String normalBalance; // 'Debet' | 'Kredit'
+  final String type;         
+  final String normalBalance; 
 
   Account({
     required this.id,
