@@ -1,0 +1,79 @@
+{
+  "appName": "Attaqwa Finance",
+  "projectDescription": "Aplikasi mobile untuk mengelola keuangan DKM Masjid Attaqwa. Aplikasi ini akan mencatat semua transaksi pemasukan (zakat, infaq, shodaqoh, kurban, dll.) dan pengeluaran (operasional, santunan, dll.). Fitur utamanya adalah kemampuan untuk mengelola kategori secara dinamis dan menghasilkan laporan keuangan dalam format PDF berdasarkan rentang tanggal.",
+  "technologyStack": {
+    "frontend": {
+      "framework": "Flutter",
+      "description": "Cross-platform framework untuk membangun aplikasi mobile yang indah dan cepat."
+    },
+    "backend": {
+      "service": "Supabase",
+      "description": "Platform open-source yang menyediakan database PostgreSQL, autentikasi, penyimpanan, dan API secara otomatis."
+    }
+  },
+  "environmentVariables": [
+    {
+      "key": "SUPABASE_URL",
+      "description": "URL unik untuk proyek Supabase Anda."
+    },
+    {
+      "key": "SUPABASE_ANON_KEY",
+      "description": "Kunci publik (anon) untuk mengakses API Supabase dari sisi klien."
+    }
+  ],
+  "designGuidelines": {
+    "colorPalette": {
+      "primary": "#004D40",
+      "primaryVariant": "#00796B",
+      "secondary": "#FFFFFF",
+      "accentIncome": "#2E7D32",
+      "accentExpense": "#C62828",
+      "background": "#FFFFFF",
+      "textPrimary": "#000000",
+      "textSecondary": "#616161"
+    },
+    "themeDescription": "Tema aplikasi harus terlihat bersih, modern, dan mewah. Gunakan transisi gradasi halus dari warna hijau mewah ke putih jika memungkinkan, terutama pada elemen kartu atau header. Latar belakang utama aplikasi adalah putih bersih.",
+    "appBar": {
+      "backgroundColor": "#FFFFFF",
+      "elevation": 0,
+      "titleColor": "#000000",
+      "iconColor": "#000000",
+      "style": "AppBar harus menyatu dengan latar belakang utama aplikasi (putih) tanpa bayangan."
+    },
+    "icons": {
+      "income": "Ikon kurva atau panah yang mengarah ke atas, berwarna hijau (accentIncome).",
+      "expense": "Ikon kurva atau panah yang mengarah ke bawah, berwarna merah (accentExpense)."
+    },
+    "typography": {
+      "fontFamily": "Inter",
+      "headings": "Tebal (Bold)",
+      "body": "Reguler"
+    }
+  },
+  "featureRequests": [
+    {
+      "feature": "User Authentication",
+      "details": "Sistem login menggunakan Supabase Auth dengan email dan password. Hanya pengguna terautentikasi yang dapat mengakses data keuangan."
+    },
+    {
+      "feature": "Category Management (CRUD)",
+      "details": "Pengguna dapat membuat, membaca, memperbarui, dan menghapus kategori untuk pemasukan dan pengeluaran. Ini memberikan fleksibilitas penuh dalam mengelola jenis-jenis transaksi."
+    },
+    {
+      "feature": "Transaction Management (CRUD)",
+      "details": "Pengguna dapat membuat, membaca, memperbarui, dan menghapus catatan transaksi. Setiap transaksi harus memiliki tanggal, jenis (pemasukan/pengeluaran), jumlah, deskripsi, dan memilih kategori dari daftar yang sudah dibuat."
+    },
+    {
+      "feature": "Dashboard",
+      "details": "Halaman utama menampilkan ringkasan total pemasukan, total pengeluaran, dan saldo akhir. Juga menampilkan daftar transaksi terbaru."
+    },
+    {
+      "feature": "PDF Report Generation",
+      "details": "Pengguna dapat memilih rentang tanggal (awal dan akhir) untuk menghasilkan laporan keuangan dalam format PDF. Laporan harus mencakup semua transaksi dalam periode tersebut, beserta ringkasan total di akhir."
+    }
+  ],
+  "databaseSchema": {
+    "language": "PostgreSQL",
+    "query": "di file schema.sql"
+  }
+}
