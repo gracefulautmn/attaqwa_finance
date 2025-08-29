@@ -16,7 +16,6 @@ class PDFGenerator {
   }) async {
     final pdf = pw.Document();
   
-    // Group transactions by type
     final pemasukan = transactions.where((t) => t.type == 'Pemasukan').toList();
     final pengeluaran = transactions.where((t) => t.type == 'Pengeluaran').toList();
 
@@ -26,7 +25,6 @@ class PDFGenerator {
         margin: const pw.EdgeInsets.all(32),
         build: (pw.Context context) {
           return [
-            // Header
             pw.Header(
               level: 0,
               child: pw.Column(
@@ -54,7 +52,6 @@ class PDFGenerator {
               ),
             ),
 
-            // Summary
             pw.Container(
               padding: const pw.EdgeInsets.all(16),
               decoration: pw.BoxDecoration(
@@ -114,7 +111,6 @@ class PDFGenerator {
 
             pw.SizedBox(height: 20),
 
-            // Pemasukan Section
             if (pemasukan.isNotEmpty) ...[
               pw.Text(
                 'PEMASUKAN',
@@ -126,7 +122,6 @@ class PDFGenerator {
               pw.Table(
                 border: pw.TableBorder.all(width: 1),
                 children: [
-                  // Header
                   pw.TableRow(
                     decoration: const pw.BoxDecoration(
                       color: PdfColors.grey300,
@@ -138,7 +133,6 @@ class PDFGenerator {
                       _buildTableCell('Jumlah', isHeader: true),
                     ],
                   ),
-                  // Data rows
                   ...pemasukan.map(
                     (transaction) => pw.TableRow(
                       children: [
@@ -154,7 +148,6 @@ class PDFGenerator {
               pw.SizedBox(height: 20),
             ],
 
-            // Pengeluaran Section
             if (pengeluaran.isNotEmpty) ...[
               pw.Text(
                 'PENGELUARAN',
@@ -166,7 +159,6 @@ class PDFGenerator {
               pw.Table(
                 border: pw.TableBorder.all(width: 1),
                 children: [
-                  // Header
                   pw.TableRow(
                     decoration: const pw.BoxDecoration(
                       color: PdfColors.grey300,
@@ -178,7 +170,6 @@ class PDFGenerator {
                       _buildTableCell('Jumlah', isHeader: true),
                     ],
                   ),
-                  // Data rows
                   ...pengeluaran.map(
                     (transaction) => pw.TableRow(
                       children: [
@@ -193,7 +184,6 @@ class PDFGenerator {
               ),
             ],
 
-            // Footer
             pw.SizedBox(height: 30),
             pw.Text(
               'Laporan dibuat pada: ${_formatDateSimple(DateTime.now())}',
@@ -204,7 +194,6 @@ class PDFGenerator {
       ),
     );
 
-    // Save PDF
     final output = await getTemporaryDirectory();
     final file = File('${output.path}/laporan_keuangan_${DateTime.now().millisecondsSinceEpoch}.pdf');
     await file.writeAsBytes(await pdf.save());

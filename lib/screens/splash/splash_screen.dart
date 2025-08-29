@@ -12,7 +12,6 @@ class SplashScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Logo with animation
             TweenAnimationBuilder<double>(
               duration: const Duration(seconds: 1),
               tween: Tween(begin: 0.0, end: 1.0),
@@ -29,7 +28,6 @@ class SplashScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             
-            // App Name with fade in animation
             TweenAnimationBuilder<double>(
               duration: const Duration(seconds: 1, milliseconds: 500),
               tween: Tween(begin: 0.0, end: 1.0),

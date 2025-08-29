@@ -102,7 +102,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
       await SupabaseService.createTransaction(transaction);
       
       if (mounted) {
-        Navigator.of(context).pop(true); // Return true to indicate success
+        Navigator.of(context).pop(true); 
       }
     } catch (e) {
       setState(() => _isLoading = false);
@@ -141,7 +141,6 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Type Selection
               Text(
                 'Jenis Transaksi',
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -254,7 +253,6 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
               
               const SizedBox(height: 24),
 
-              // Category Selection
               Text(
                 'Kategori',
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -281,7 +279,6 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                               const SizedBox(height: 8),
                               TextButton(
                                 onPressed: () {
-                                  // Navigate to add category
                                   Navigator.of(context).pushNamed('/add-category');
                                 },
                                 child: const Text('Tambah Kategori'),
@@ -317,7 +314,6 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
 
               const SizedBox(height: 24),
 
-              // Amount Input
               Text(
                 'Jumlah',
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -347,7 +343,6 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
 
               const SizedBox(height: 24),
 
-              // Date Selection
               Text(
                 'Tanggal',
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -379,7 +374,6 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
 
               const SizedBox(height: 24),
 
-              // Description Input
               Text(
                 'Deskripsi (Opsional)',
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -398,7 +392,6 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
 
               const SizedBox(height: 32),
 
-              // Save Button
               SizedBox(
                 width: double.infinity,
                 height: 48,

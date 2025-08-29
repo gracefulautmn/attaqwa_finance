@@ -5,10 +5,9 @@ class Transaction {
   final DateTime date;
   final String? description;
   final double amount;
-  final String type; // 'Pemasukan' or 'Pengeluaran'
+  final String type; 
   final DateTime createdAt;
 
-  // For displaying category name
   final String? categoryName;
 
   Transaction({
@@ -42,7 +41,7 @@ class Transaction {
       'id': id,
       'user_id': userId,
       'category_id': categoryId,
-      'date': date.toIso8601String().split('T')[0], // Only date part
+      'date': date.toIso8601String().split('T')[0], 
       'description': description,
       'amount': amount,
       'type': type,

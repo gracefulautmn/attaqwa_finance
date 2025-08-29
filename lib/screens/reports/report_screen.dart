@@ -99,7 +99,6 @@ class _ReportScreenState extends State<ReportScreen> {
         endDate: _endDate,
       );
 
-      // Extract filename from path
       final fileName = pdfPath.split('/').last;
 
       ScaffoldMessenger.of(context).showSnackBar(
@@ -151,7 +150,6 @@ class _ReportScreenState extends State<ReportScreen> {
       ),
       body: Column(
         children: [
-          // Date Range Card
           Container(
             margin: const EdgeInsets.all(16),
             padding: const EdgeInsets.all(16),
@@ -191,7 +189,6 @@ class _ReportScreenState extends State<ReportScreen> {
             ),
           ),
 
-          // Content
           Expanded(
             child: _isLoading
                 ? const Center(child: CircularProgressIndicator())
@@ -203,15 +200,13 @@ class _ReportScreenState extends State<ReportScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Summary Section
                           if (_summary != null) _buildSummarySection(),
                           
                           const SizedBox(height: 24),
                           
-                          // Transactions Section
                           _buildTransactionsSection(),
                           
-                          const SizedBox(height: 100), // Space for FAB
+                          const SizedBox(height: 100), 
                         ],
                       ),
                     ),
@@ -252,7 +247,6 @@ class _ReportScreenState extends State<ReportScreen> {
         ),
         const SizedBox(height: 16),
         
-        // Summary Cards
         Row(
           children: [
             Expanded(
@@ -277,7 +271,6 @@ class _ReportScreenState extends State<ReportScreen> {
         
         const SizedBox(height: 16),
         
-        // Balance Card
         Container(
           width: double.infinity,
           padding: const EdgeInsets.all(20),

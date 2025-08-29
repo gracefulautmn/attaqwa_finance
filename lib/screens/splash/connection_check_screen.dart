@@ -33,10 +33,8 @@ class _ConnectionCheckScreenState extends State<ConnectionCheckScreen> {
         _isRetrying = false;
       });
 
-      // Test koneksi dengan timeout
       final client = Supabase.instance.client;
       
-      // Coba query sederhana untuk test koneksi
       await client
           .from('categories')
           .select('count')
@@ -47,7 +45,6 @@ class _ConnectionCheckScreenState extends State<ConnectionCheckScreen> {
         _statusMessage = 'Koneksi berhasil!';
       });
 
-      // Delay sebentar untuk user melihat pesan sukses
       await Future.delayed(const Duration(milliseconds: 500));
       
       widget.onSuccess();
@@ -56,7 +53,6 @@ class _ConnectionCheckScreenState extends State<ConnectionCheckScreen> {
         _statusMessage = 'Gagal terhubung ke server';
       });
       
-      // Auto retry setelah 3 detik
       await Future.delayed(const Duration(seconds: 3));
       if (mounted) {
         _retryConnection();
@@ -86,7 +82,6 @@ class _ConnectionCheckScreenState extends State<ConnectionCheckScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Logo
               Container(
                 width: 120,
                 height: 120,
@@ -109,7 +104,6 @@ class _ConnectionCheckScreenState extends State<ConnectionCheckScreen> {
               ),
               const SizedBox(height: 32),
               
-              // App Name
               Text(
                 'Attaqwa Finance',
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
@@ -127,13 +121,11 @@ class _ConnectionCheckScreenState extends State<ConnectionCheckScreen> {
               ),
               const SizedBox(height: 48),
               
-              // Loading Indicator
               const CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(AppTheme.primary),
               ),
               const SizedBox(height: 24),
               
-              // Status Message
               Text(
                 _statusMessage,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -143,14 +135,12 @@ class _ConnectionCheckScreenState extends State<ConnectionCheckScreen> {
               ),
               const SizedBox(height: 24),
               
-              // Retry Button (shown only if there's an error and not currently retrying)
               if (_statusMessage.contains('Gagal') && !_isRetrying)
                 ElevatedButton(
                   onPressed: _retryConnection,
                   child: const Text('Coba Lagi'),
                 ),
               
-              // Manual Continue Button (for testing/fallback)
               if (_statusMessage.contains('Gagal'))
                 TextButton(
                   onPressed: widget.onError,

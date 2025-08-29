@@ -2,7 +2,7 @@ class Category {
   final int? id;
   final String userId;
   final String name;
-  final String type; // 'Pemasukan' or 'Pengeluaran'
+  final String type; 
   final DateTime createdAt;
 
   Category({

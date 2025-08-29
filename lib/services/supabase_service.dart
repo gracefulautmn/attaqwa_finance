@@ -6,7 +6,6 @@ import 'package:attaqwa_finance/models/financial_summary.dart';
 class SupabaseService {
   static final SupabaseClient _client = Supabase.instance.client;
 
-  // Auth Methods
   static Future<AuthResponse> signIn(String email, String password) async {
     return await _client.auth.signInWithPassword(
       email: email,
@@ -27,7 +26,6 @@ class SupabaseService {
 
   static User? get currentUser => _client.auth.currentUser;
 
-  // Category Methods
   static Future<List<Category>> getCategories(String type) async {
     final response = await _client
         .from('categories')
@@ -68,7 +66,6 @@ class SupabaseService {
     await _client.from('categories').delete().eq('id', categoryId);
   }
 
-  // Transaction Methods
   static Future<List<Transaction>> getTransactions({
     DateTime? startDate,
     DateTime? endDate,
@@ -148,7 +145,6 @@ class SupabaseService {
     await _client.from('transactions').delete().eq('id', transactionId);
   }
 
-  // Financial Summary
   static Future<FinancialSummary> getFinancialSummary({
     DateTime? startDate,
     DateTime? endDate,
@@ -159,7 +155,6 @@ class SupabaseService {
       'user_uuid': userId,
     });
 
-    // If date range is specified, we need to calculate manually
     if (startDate != null || endDate != null) {
       var transactionQuery = _client
           .from('transactions')

@@ -10,7 +10,6 @@ class CurrencyUtils {
     try {
       return _formatter.format(amount);
     } catch (e) {
-      // Fallback manual formatting
       return 'Rp ${amount.toInt().toString().replaceAllMapped(
         RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
         (Match m) => '${m[1]}.',
@@ -26,7 +25,6 @@ class CurrencyUtils {
       );
       return formatter.format(amount);
     } catch (e) {
-      // Fallback manual formatting
       return 'Rp ${amount.toStringAsFixed(2).replaceAllMapped(
         RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
         (Match m) => '${m[1]}.',
@@ -43,7 +41,6 @@ class DateUtils {
     try {
       return _dateFormat.format(date);
     } catch (e) {
-      // Fallback manual formatting
       const months = [
         'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
         'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'

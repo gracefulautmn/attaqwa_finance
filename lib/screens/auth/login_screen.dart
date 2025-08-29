@@ -78,7 +78,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Logo/Header
                     Container(
                       width: 120,
                       height: 120,
@@ -116,7 +115,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 48),
 
-                    // Form
                     Form(
                       key: _formKey,
                       child: Column(
@@ -187,15 +185,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
 
-              // Toggle Sign Up/Sign In
               TextButton(
                 onPressed: () {
-                  setState(() => _isSignUp = !_isSignUp);
+                  
                 },
                 child: Text(
                   _isSignUp
-                      ? 'Sudah punya akun? Masuk'
-                      : 'Belum punya akun? Daftar',
+                      ? 'Hubungi pengurus masjid'
+                      : 'Hubungin pengurus masjid',
                 ),
               ),
             ],

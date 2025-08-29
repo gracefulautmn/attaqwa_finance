@@ -78,11 +78,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Financial Summary Cards
                     _buildSummarySection(),
                     const SizedBox(height: 24),
                     
-                    // Recent Transactions
                     _buildRecentTransactionsSection(),
                   ],
                 ),
@@ -96,7 +94,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
           );
           if (result == true) {
-            _loadData(); // Reload data after adding transaction
+            _loadData(); 
           }
         },
         backgroundColor: AppTheme.primary,
@@ -119,7 +117,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
         const SizedBox(height: 16),
         
-        // Saldo Card
         Container(
           width: double.infinity,
           padding: const EdgeInsets.all(20),
@@ -163,7 +160,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
         
         const SizedBox(height: 16),
         
-        // Income and Expense Cards
         Row(
           children: [
             Expanded(
@@ -250,7 +246,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
             if (_recentTransactions.isNotEmpty)
               TextButton(
                 onPressed: () {
-                  // Navigate to transactions screen
                 },
                 child: const Text('Lihat Semua'),
               ),

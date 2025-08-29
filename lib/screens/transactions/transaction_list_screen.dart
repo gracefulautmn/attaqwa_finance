@@ -100,7 +100,7 @@ class _TransactionListScreenState extends State<TransactionListScreen> {
             ),
           );
           if (result == true) {
-            _loadTransactions(); // Reload data after adding transaction
+            _loadTransactions(); 
           }
         },
         backgroundColor: AppTheme.primary,
@@ -280,7 +280,6 @@ class _TransactionListScreenState extends State<TransactionListScreen> {
                   child: OutlinedButton.icon(
                     onPressed: () {
                       Navigator.pop(context);
-                      // TODO: Implement edit
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Fitur edit akan segera hadir')),
                       );

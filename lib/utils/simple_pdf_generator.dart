@@ -15,12 +15,10 @@ class SimplePDFGenerator {
     required DateTime endDate,
   }) async {
     try {
-      // Request storage permission
       await _requestStoragePermission();
       
       final pdf = pw.Document();
 
-      // Group transactions by type
       final pemasukan = transactions.where((t) => t.type == 'Pemasukan').toList();
       final pengeluaran = transactions.where((t) => t.type == 'Pengeluaran').toList();
 
@@ -30,7 +28,6 @@ class SimplePDFGenerator {
           margin: const pw.EdgeInsets.all(32),
           build: (pw.Context context) {
             return [
-              // Header
               pw.Text(
                 'LAPORAN KEUANGAN',
                 style: const pw.TextStyle(fontSize: 24),
@@ -45,7 +42,6 @@ class SimplePDFGenerator {
               pw.Divider(),
               pw.SizedBox(height: 20),
               
-              // Summary
               pw.Container(
                 padding: const pw.EdgeInsets.all(16),
                 decoration: pw.BoxDecoration(
@@ -88,14 +84,12 @@ class SimplePDFGenerator {
               ),
               pw.SizedBox(height: 20),
               
-              // Pemasukan Section
               if (pemasukan.isNotEmpty) ...[
                 pw.Text('PEMASUKAN', style: const pw.TextStyle(fontSize: 16)),
                 pw.SizedBox(height: 10),
                 pw.Table(
                   border: pw.TableBorder.all(width: 1),
                   children: [
-                    // Header
                     pw.TableRow(
                       decoration: const pw.BoxDecoration(color: PdfColors.grey300),
                       children: [
@@ -105,7 +99,6 @@ class SimplePDFGenerator {
                         _buildTableCell('Jumlah'),
                       ],
                     ),
-                    // Data rows
                     ...pemasukan.map(
                       (transaction) => pw.TableRow(
                         children: [
@@ -121,14 +114,12 @@ class SimplePDFGenerator {
                 pw.SizedBox(height: 20),
               ],
               
-              // Pengeluaran Section
               if (pengeluaran.isNotEmpty) ...[
                 pw.Text('PENGELUARAN', style: const pw.TextStyle(fontSize: 16)),
                 pw.SizedBox(height: 10),
                 pw.Table(
                   border: pw.TableBorder.all(width: 1),
                   children: [
-                    // Header
                     pw.TableRow(
                       decoration: const pw.BoxDecoration(color: PdfColors.grey300),
                       children: [
@@ -138,7 +129,6 @@ class SimplePDFGenerator {
                         _buildTableCell('Jumlah'),
                       ],
                     ),
-                    // Data rows
                     ...pengeluaran.map(
                       (transaction) => pw.TableRow(
                         children: [
@@ -154,7 +144,6 @@ class SimplePDFGenerator {
                 pw.SizedBox(height: 20),
               ],
               
-              // Footer
               pw.SizedBox(height: 30),
               pw.Text(
                 'Laporan dibuat pada: ${_formatDate(DateTime.now())}',
@@ -169,7 +158,6 @@ class SimplePDFGenerator {
         ),
       );
 
-      // Save to Downloads directory
       final fileName = 'Laporan_Keuangan_${_formatDateForFile(startDate)}_${_formatDateForFile(endDate)}.pdf';
       final file = await _saveToDownloads(await pdf.save(), fileName);
 
@@ -190,14 +178,11 @@ class SimplePDFGenerator {
     late Directory directory;
     
     if (Platform.isAndroid) {
-      // For Android, try to save to Downloads folder
       directory = Directory('/storage/emulated/0/Download');
       if (!await directory.exists()) {
-        // Fallback to external storage
         directory = await getExternalStorageDirectory() ?? await getApplicationDocumentsDirectory();
       }
     } else {
-      // For iOS or other platforms
       directory = await getApplicationDocumentsDirectory();
     }
 
