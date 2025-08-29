@@ -3,6 +3,8 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:attaqwa_finance/screens/auth/login_screen.dart';
 import 'package:attaqwa_finance/screens/main/main_screen.dart';
+import 'package:attaqwa_finance/screens/splash/splash_screen.dart';
+import 'package:attaqwa_finance/screens/splash/connection_check_screen.dart';
 import 'package:attaqwa_finance/theme/app_theme.dart';
 import 'package:intl/date_symbol_data_local.dart';
 

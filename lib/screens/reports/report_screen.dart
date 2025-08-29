@@ -285,18 +285,12 @@ class _ReportScreenState extends State<ReportScreen> {
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [
-                _summary!.saldoAkhir >= 0 ? AppTheme.accentIncome : AppTheme.accentExpense,
-                _summary!.saldoAkhir >= 0 
-                    ? AppTheme.accentIncome.withOpacity(0.8)
-                    : AppTheme.accentExpense.withOpacity(0.8),
-              ],
+              colors: [AppTheme.primary, AppTheme.primaryVariant],
             ),
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: (_summary!.saldoAkhir >= 0 ? AppTheme.accentIncome : AppTheme.accentExpense)
-                    .withOpacity(0.3),
+                color: AppTheme.primary.withOpacity(0.3),
                 blurRadius: 8,
                 offset: const Offset(0, 4),
               ),
@@ -317,7 +311,7 @@ class _ReportScreenState extends State<ReportScreen> {
                 currency_utils.CurrencyUtils.format(_summary!.saldoAkhir),
                 style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 24,
+                  fontSize: 28,
                   fontWeight: FontWeight.bold,
                 ),
               ),
